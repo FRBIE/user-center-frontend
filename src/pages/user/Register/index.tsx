@@ -5,14 +5,14 @@ import {
   UserOutlined,
 } from '@ant-design/icons';
 import {
-  LoginForm,
+  LoginForm, ProFormCheckbox,
   ProFormText,
 } from '@ant-design/pro-components';
-import { message, Tabs} from 'antd';
+import {Divider, message, Space, Tabs} from 'antd';
 import React, { useState } from 'react';
-import {history,} from 'umi';
+import {history, Link,} from 'umi';
 import styles from './index.less';
-import {SYSTEM_LOGO} from "@/constants";
+import {GITHUB_URL, SYSTEM_LOGO} from "@/constants";
 const Register: React.FC = () => {
   const [type, setType] = useState<string>('account');
   const handleSubmit = async (values: API.RegisterParams) => {
@@ -24,7 +24,7 @@ const Register: React.FC = () => {
     try {
       // 注册
       const id = await register(values);
-      if (id > 0) {
+      if (id) {
         const defaultLoginSuccessMessage = '注册成功！';
         message.success(defaultLoginSuccessMessage);
         /** 此方法会跳转到 redirect 参数所在的位置 */
@@ -35,10 +35,8 @@ const Register: React.FC = () => {
           query,
         });
         return;
-      }else{
-        throw new Error(`register error id = ${id}`);
       }
-    } catch (error) {
+    } catch (error:any) {
       const defaultLoginFailureMessage = '注册失败，请重试！';
       message.error(defaultLoginFailureMessage);
     }
@@ -119,6 +117,9 @@ const Register: React.FC = () => {
               />
             </>
           )}
+          <Space split={<Divider type="vertical" />}>
+            <Link to="/user/login">返回登录</Link>
+          </Space>
         </LoginForm>
       </div>
       <Footer />
