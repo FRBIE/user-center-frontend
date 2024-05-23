@@ -5,14 +5,14 @@ import {
   UserOutlined,
 } from '@ant-design/icons';
 import {
-  LoginForm, ProFormCheckbox,
+  LoginForm,
   ProFormText,
 } from '@ant-design/pro-components';
 import {Divider, message, Space, Tabs} from 'antd';
 import React, { useState } from 'react';
 import {history, Link,} from 'umi';
 import styles from './index.less';
-import {GITHUB_URL, SYSTEM_LOGO} from "@/constants";
+import { SYSTEM_LOGO} from "@/constants";
 const Register: React.FC = () => {
   const [type, setType] = useState<string>('account');
   const handleSubmit = async (values: API.RegisterParams) => {
