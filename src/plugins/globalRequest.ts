@@ -50,7 +50,9 @@ request.interceptors.response.use(async (response, options): Promise<any> => {
       }),
     });
   } else {
-    message.error(res.description)
+    if(res.description !== ""){
+      message.error(res.description)
+    }
   }
   return res.data;
 });
