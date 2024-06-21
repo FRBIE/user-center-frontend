@@ -31,4 +31,10 @@ export default {
       pathRewrite: { '^': '' },
     },
   },
+  production: {
+    '/api/': {
+      target: 'http://120.24.177.195:5359',
+      changeOrigin: true,
+    },
+  },
 };

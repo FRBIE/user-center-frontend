@@ -12,6 +12,7 @@ const isDev = process.env.NODE_ENV === 'development';
 const loginPath = '/user/login';
 
 import { RequestConfig } from 'umi';
+import * as process from "process";
 
 export const request: RequestConfig = {
   timeout: 10000,
@@ -33,6 +34,7 @@ export async function getInitialState(): Promise<{
   loading?: boolean;
   fetchUserInfo?: () => Promise<API.CurrentUser | undefined>;
 }> {
+  alert(process.env.NODE_ENV)
   const fetchUserInfo = async () => {
     try {
       return await queryCurrentUser();
